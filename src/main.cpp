@@ -2,11 +2,9 @@
 #include <asserts.hpp>
 #include <storage.hpp>
 
-void setup() {
-    LOG_BEGINE();
-}
+void setup() {}
 
 void loop() {
-    EEPROM_smart_write(0, "hello", "world", "I'm", "Here");
+    LOG_INFO("Hello world");
     delay(1000);
 }

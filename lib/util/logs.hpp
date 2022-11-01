@@ -17,10 +17,6 @@ static void _serial_setup() noexcept {
     }
 }
 
-#define LOG_BEGINE() \
-    _serial_setup(); \
-    Serial.begin(115200)
-
 #define _LOG(logLevel, message) \
     _serial_setup(); \
     std::cout << '[' << micros() << "] " << '[' << logLevel << "] " << message << std::endl
