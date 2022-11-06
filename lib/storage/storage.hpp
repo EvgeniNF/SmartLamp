@@ -68,5 +68,18 @@ void EEPROM_smart_read(uint16_t startAddress, T &...data) noexcept {
     (([&] () {
         data = EEPROM_read<T>(startAddress);
         startAddress = startAddress + sizeof(T) + 1;
-    }), ...);
+    }()), ...);
+}
+
+template<class... T> 
+Array compute_addresses(uint16_t startAddress) {
+    Array addresses;
+    
+    (([&] () {
+        addresses.data[addresses.len] = startAddress;
+        startAddress += sizeof(T) + 1;
+        ++addresses.len;
+    }()), ...);
+
+    return addresses;
 }
